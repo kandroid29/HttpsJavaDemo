@@ -24,9 +24,10 @@ public class HttpsMockServer extends HttpsMockBase {
         ss.setReuseAddress(false);
         while (true) {
             try {
-                final Socket s = ss.accept();
-                doHttpsShakeHands(s);
-                executorService.execute(() -> doSocketTransport(s));
+                System.out.println("waiting on port 80...");
+                final Socket skt = ss.accept();
+                doHttpsShakeHands(skt);
+                executorService.execute(() -> doSocketTransport(skt));
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -40,6 +41,7 @@ public class HttpsMockServer extends HttpsMockBase {
             int length = in.readInt();
             byte[] clientMsg = readBytes(length);
             System.out.println("客户端指令内容为:" + byte2hex(clientMsg));
+            System.out.println("客户端指令内容为:" + new String(clientMsg));
 
             writeBytes("服务器已经接受请求".getBytes());
         } catch (Exception ex) {
@@ -59,9 +61,9 @@ public class HttpsMockServer extends HttpsMockBase {
         SocketUtils.writeBytes(out, encrpted, encrpted.length);
     }
 
-    private static void doHttpsShakeHands(Socket s) throws Exception {
-        in = new DataInputStream(s.getInputStream());
-        out = new DataOutputStream(s.getOutputStream());
+    private static void doHttpsShakeHands(Socket skt) throws Exception {
+        in = new DataInputStream(skt.getInputStream());
+        out = new DataOutputStream(skt.getOutputStream());
 
         //第一步 获取客户端发送的支持的验证规则，包括hash算法，这里选用SHA1作为hash
         int length = in.readInt();

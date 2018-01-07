@@ -27,6 +27,7 @@ public class HttpsMockClient extends HttpsMockBase {
         int len = in.readInt();
         byte[] msg = readBytes(len);
         System.out.println("服务器反馈消息:" + byte2hex(msg));
+        System.out.println("服务器反馈消息:" + new String(msg));
         Thread.sleep(1000 * 100);
 
 
