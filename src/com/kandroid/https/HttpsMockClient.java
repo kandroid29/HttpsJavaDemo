@@ -42,7 +42,7 @@ public class HttpsMockClient extends HttpsMockBase {
         //第二步 客户端验证服务器端证书是否合法
         int skip = in.readInt();
         byte[] certificate = SocketUtils.readBytes(in, skip);
-        java.security.cert.Certificate cc = CertifcateUtils.createCertiface(certificate);
+        java.security.cert.Certificate cc = CertificateUtils.createCertiface(certificate);
 
         publicKey = cc.getPublicKey();
         cc.verify(publicKey);

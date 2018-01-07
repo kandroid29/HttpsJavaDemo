@@ -47,7 +47,7 @@ public class HttpsMockBase {
 
     public static byte[] decryptByPublicKey(byte data[], SecureRandom seed) throws Exception {
         if (publicKey == null) {
-            publicKey = CertifcateUtils.readPublicKeys();
+            publicKey = CertificateUtils.readPublicKeys();
         }
         // 对数据解密
         Cipher cipher = Cipher.getInstance(publicKey.getAlgorithm());
@@ -62,7 +62,7 @@ public class HttpsMockBase {
 
     public static byte[] decryptByDes(byte data[], SecureRandom seed) throws Exception {
         if (publicKey == null) {
-            publicKey = CertifcateUtils.readPublicKeys();
+            publicKey = CertificateUtils.readPublicKeys();
         }
         // 对数据解密
         Cipher cipher = Cipher.getInstance("DES");
@@ -79,7 +79,7 @@ public class HttpsMockBase {
     public static byte[] encryptByPublicKey(byte[] data, SecureRandom seed)
             throws Exception {
         if (publicKey == null) {
-            publicKey = CertifcateUtils.readPublicKeys();
+            publicKey = CertificateUtils.readPublicKeys();
         }
         // 对数据加密
         Cipher cipher = Cipher.getInstance(publicKey.getAlgorithm());

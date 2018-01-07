@@ -72,8 +72,8 @@ public class HttpsMockServer extends HttpsMockBase {
         System.out.println("客户端发送了hash算法为:" + clientHash);
 
         //第二步，发送服务器证书到客户端
-        byte[] certificateBytes = CertifcateUtils.readCertifacates();
-        privateKey = CertifcateUtils.readPrivateKeys();
+        byte[] certificateBytes = CertificateUtils.readCertifacates();
+        privateKey = CertificateUtils.readPrivateKeys();
         System.out.println("发送证书给客户端,字节长度为:" + certificateBytes.length);
         System.out.println("证书内容为:" + byte2hex(certificateBytes));
         SocketUtils.writeBytes(out, certificateBytes, certificateBytes.length);

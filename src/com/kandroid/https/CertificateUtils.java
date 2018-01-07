@@ -8,7 +8,7 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.cert.CertificateFactory;
 
-public class CertifcateUtils {
+public class CertificateUtils {
     public static byte[] readCertifacates() throws Exception{
         CertificateFactory factory=CertificateFactory.getInstance("X.509");
         InputStream in=new FileInputStream("c:/https.crt");
